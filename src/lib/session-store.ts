@@ -30,6 +30,12 @@ function save(session: Session) {
   } catch {}
 }
 
+export function clearSavedSession() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch {}
+}
+
 export function createSessionStore() {
   let session: Session | undefined;
   const listeners = new Set<() => void>();

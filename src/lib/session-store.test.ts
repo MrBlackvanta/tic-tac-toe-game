@@ -9,6 +9,7 @@ import {
 import { newGame } from "./game";
 import { FIRST_VISIT } from "./session";
 import {
+  clearSavedSession,
   createSessionStore,
   openResumeGate,
   RESUME_GATE_SCRIPT,
@@ -95,6 +96,25 @@ describe("createSessionStore", () => {
     createSessionStore().dispatch(START);
 
     expect(createSessionStore().getServerSnapshot()).toBe(FIRST_VISIT);
+  });
+});
+
+describe("clearSavedSession", () => {
+  it("sends the next visit back to the menu", () => {
+    createSessionStore().dispatch(START);
+
+    clearSavedSession();
+
+    expect(saved()).toBeNull();
+    expect(createSessionStore().getSnapshot()).toBe(FIRST_VISIT);
+  });
+
+  it("does nothing when storage throws", () => {
+    vi.spyOn(Storage.prototype, "removeItem").mockImplementation(() => {
+      throw new DOMException("denied", "SecurityError");
+    });
+
+    expect(clearSavedSession).not.toThrow();
   });
 });
 
