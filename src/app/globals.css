@@ -1,0 +1,31 @@
+@import "tailwindcss";
+@source not "../../*.md";
+@source not "../../lint";
+@source not "../**/*.test.ts";
+@source not "../**/*.test.tsx";
+@source not "../test";
+@source not "./icon.svg";
+
+@theme inline {
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme {
+  --color-*: initial;
+  --color-page: #1a2a33;
+  --color-muted: #a8bfc9;
+}
+
+@layer base {
+  html {
+    @apply overflow-y-scroll;
+  }
+
+  body {
+    @apply bg-page font-medium text-muted;
+  }
+
+  button:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
