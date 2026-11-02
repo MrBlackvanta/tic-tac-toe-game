@@ -1,6 +1,6 @@
 export default function Signature() {
   return (
-    <footer className="absolute inset-x-0 bottom-0.5 text-center text-xs">
+    <footer className="absolute inset-x-0 bottom-0.5 text-center text-body-s">
       Coded by{" "}
       <a
         href="https://www.linkedin.com/in/abdelrhman-vanta/"

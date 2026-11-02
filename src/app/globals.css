@@ -12,8 +12,57 @@
 
 @theme {
   --color-*: initial;
+  --color-black: #000000;
   --color-page: #1a2a33;
+  --color-surface: #1f3641;
+  --color-surface-dark: #10212a;
   --color-muted: #a8bfc9;
+  --color-muted-light: #dbe8ed;
+  --color-muted-dark: #6b8997;
+  --color-x: #31c3bd;
+  --color-x-light: #65e9e4;
+  --color-x-dark: #118c87;
+  --color-o: #f2b137;
+  --color-o-light: #ffc860;
+  --color-o-dark: #cc8b13;
+
+  --text-*: initial;
+  --text-heading-l: 2.5rem;
+  --text-heading-l--line-height: 3.125rem;
+  --text-heading-l--letter-spacing: 0.0625em;
+  --text-heading-l--font-weight: 700;
+
+  --text-heading-m: 1.5rem;
+  --text-heading-m--line-height: 1.875rem;
+  --text-heading-m--letter-spacing: 0.0625em;
+  --text-heading-m--font-weight: 700;
+
+  --text-heading-s: 1.25rem;
+  --text-heading-s--line-height: 1.5625rem;
+  --text-heading-s--letter-spacing: 0.0625em;
+  --text-heading-s--font-weight: 700;
+
+  --text-heading-xs: 1rem;
+  --text-heading-xs--line-height: 1.25rem;
+  --text-heading-xs--letter-spacing: 0.0625em;
+  --text-heading-xs--font-weight: 700;
+
+  --text-body: 0.875rem;
+  --text-body--line-height: 1.125rem;
+  --text-body--letter-spacing: 0.0625em;
+
+  --text-body-s: 0.75rem;
+  --text-body-s--line-height: 0.9375rem;
+  --text-body-s--letter-spacing: 0.0625em;
+
+  --radius-*: initial;
+  --radius-sm: 0.3125rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.9375rem;
+
+  --inset-shadow-*: initial;
+  --inset-shadow-sm: inset 0 -0.25rem 0 var(--color-black);
+  --inset-shadow-lg: inset 0 -0.5rem 0 var(--color-black);
 }
 
 @layer base {
@@ -22,10 +71,14 @@
   }
 
   body {
-    @apply bg-page font-medium text-muted;
+    @apply bg-page text-body font-medium text-muted;
   }
 
   button:not(:disabled) {
     @apply cursor-pointer;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-muted;
   }
 }
