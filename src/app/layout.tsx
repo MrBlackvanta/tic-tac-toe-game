@@ -1,5 +1,6 @@
 import { Signature } from "@/components/layout";
 import { SITE_NAME, SITE_URL } from "@/data";
+import { RESUME_GATE_SCRIPT } from "@/lib";
 import type { Metadata, Viewport } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
@@ -54,8 +55,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} antialiased`}>
+    <html
+      lang="en"
+      className={`${outfit.variable} antialiased`}
+      suppressHydrationWarning
+    >
       <body className="relative flex min-h-dvh flex-col">
+        <script dangerouslySetInnerHTML={{ __html: RESUME_GATE_SCRIPT }} />
         {children}
         <Signature />
       </body>

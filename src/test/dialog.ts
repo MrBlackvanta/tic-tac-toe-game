@@ -21,8 +21,8 @@ function closeOnEscape(event: KeyboardEvent) {
   const modal = document.querySelector("dialog[open]");
   if (!(modal instanceof HTMLDialogElement)) return;
 
-  modal.dispatchEvent(new Event("cancel"));
-  modal.close();
+  const cancel = new Event("cancel", { cancelable: true });
+  if (modal.dispatchEvent(cancel)) modal.close();
 }
 
 export function installDialog() {

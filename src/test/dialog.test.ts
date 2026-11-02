@@ -45,6 +45,18 @@ describe("dialog stub", () => {
     expect(dialog.open).toBe(false);
   });
 
+  it("keeps the dialog open when cancel is prevented", () => {
+    const { dialog } = mount();
+    dialog.addEventListener("cancel", (event) => event.preventDefault());
+    dialog.showModal();
+
+    document.activeElement!.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "Escape", bubbles: true }),
+    );
+
+    expect(dialog.open).toBe(true);
+  });
+
   it("leaves focus alone when the opener is gone", () => {
     const { opener, dialog } = mount();
     const restore = vi.spyOn(opener, "focus");
